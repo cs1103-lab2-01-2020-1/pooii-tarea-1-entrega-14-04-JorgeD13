@@ -89,7 +89,7 @@ void vector::erase(int ind) {
 
 vector vector::operator+(vector &vector) {
     int j=0;
-    vector sum(this->capacity + vector.capacity);
+    class ector sum(this->capacity + vector.capacity);
     for(int i = 0; i < this->size+vector.size; i++) {
         if (i < this->capacity)
             sum[i] = this->V[i];
