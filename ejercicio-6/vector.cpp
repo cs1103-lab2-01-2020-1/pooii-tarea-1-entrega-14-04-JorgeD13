@@ -1,32 +1,33 @@
-#include "vector.h"
 
-vector::vector() : capacity(10) , size(0){
+#include "Vector.h"
+
+Vector::Vector() : capacity(10) , size(0){
     V = new int[capacity];
 }
 
-vector::vector(int n) : size(0) {
+Vector::Vector(int n) : size(0) {
     capacity = n;
     V = new int[capacity];
 }
 
-vector::vector(const vector& vector) {
+Vector::Vector(const Vector& vector) {
     size = vector.size;
     this->capacity = vector.capacity;
     V = vector.V;
 }
 
-vector::~vector() {
+Vector::~Vector() {
     delete[] V;
     V = nullptr;
 }
 
 
-int& vector::operator[](int n) {
+int& Vector::operator[](int n) {
     return V[n];
 }
 
 
-void vector::push_back(int n) {
+void Vector::push_back(int n) {
     if (size + 1 > capacity){
         capacity*=2;
         int* aux =new int[capacity];
@@ -43,7 +44,7 @@ void vector::push_back(int n) {
 }
 
 
-void vector::pop_back(int n) {
+void Vector::pop_back(int n) {
     int* aux = new int[size];
     for (int i=0; i<=size-1;i++){
         aux[i]=V[i];
@@ -54,7 +55,7 @@ void vector::pop_back(int n) {
     size--;
 }
 
-void vector::insert(int ind, int n) {
+void Vector::insert(int ind, int n) {
     int i = 0, j = 0;
     this->size++;
     if (this->size+1 > this->capacity)
@@ -70,7 +71,7 @@ void vector::insert(int ind, int n) {
     this->V = aux;
     delete[] aux;
 }
-void vector::erase(int ind) {
+void Vector::erase(int ind) {
     int i= 0, j = 0;
     this->size--;
     int* aux = new int[this->capacity];
@@ -87,9 +88,9 @@ void vector::erase(int ind) {
     delete[] aux;
 }
 
-vector vector::operator+(vector &vector) {
+Vector Vector::operator+(Vector &vector) {
     int j=0;
-    class vector sum(this->capacity + vector.capacity);
+    class Vector sum(this->capacity + vector.capacity);
     for(int i = 0; i < this->size+vector.size; i++) {
         if (i < this->capacity)
             sum[i] = this->V[i];
@@ -100,7 +101,8 @@ vector vector::operator+(vector &vector) {
     return sum;
 }
 
-vector vector::operator=(vector &a) {
+Vector Vector::operator=(Vector &a) {
 
-    return vector(5);
+    return Vector(5);
 }
+
