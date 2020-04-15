@@ -91,8 +91,9 @@ void Vector::erase(int ind) {
 Vector Vector::operator+(Vector &vector) {
     int j=0;
     Vector sum(this->capacity + vector.capacity);
-    for(int i = 0; i < this->size+vector.size; i++) {
-        if (i < this->capacity)
+    sum.size=this->size+vector.size;
+    for(int i = 0; i < sum.size; i++) {
+        if (i < this->size)
             sum[i] = this->V[i];
         else {
             sum[i] = vector.V[j++];
@@ -101,7 +102,11 @@ Vector Vector::operator+(Vector &vector) {
     return sum;
 }
 
-Vector Vector::operator=(Vector &a) {
-
-    return Vector(5);
+Vector Vector::operator=(const Vector &a) {
+    this->capacity=a.capacity;
+    this->size=a.size;
+    this->V=a.V;
+    return *this;
 }
+
+

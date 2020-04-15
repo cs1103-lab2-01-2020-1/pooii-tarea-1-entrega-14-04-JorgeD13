@@ -13,5 +13,5 @@ public:
     virtual void erase(int ind);
     int& operator[](int n); //Usar para acceder a un elemento existente, no para crear uno, motivo:size
     Vector operator+(Vector& a);
-    Vector operator=(Vector& a);
+    Vector operator=(const Vector& a);
 };
